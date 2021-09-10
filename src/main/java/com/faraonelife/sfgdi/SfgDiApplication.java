@@ -1,9 +1,6 @@
 package com.faraonelife.sfgdi;
 
-import com.faraonelife.sfgdi.Controllers.ConstructorInjectorController;
-import com.faraonelife.sfgdi.Controllers.MyController;
-import com.faraonelife.sfgdi.Controllers.PropertyInjectionController;
-import com.faraonelife.sfgdi.Controllers.SetterInjaectedController;
+import com.faraonelife.sfgdi.Controllers.*;
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
 import org.springframework.context.ApplicationContext;
@@ -16,8 +13,13 @@ public class SfgDiApplication {
     public static void main(String[] args) {
        ApplicationContext ctx= SpringApplication.run(SfgDiApplication.class, args);
         MyController myController=(MyController) ctx.getBean("myController");
-        String  greating =myController.sayHello();
-        System.out.println(greating);
+        System.out.println("----I18N ");
+        I18nController i18nController=(I18nController)ctx.getBean("i18nController");
+        System.out.println(i18nController.sayHello());
+
+        System.out.println("----Primary bean");
+        System.out.println(myController.sayHello());
+
 
         System.out.println("-----property");
         PropertyInjectionController propertyInjectionController=(PropertyInjectionController) ctx.getBean("propertyInjectionController");
